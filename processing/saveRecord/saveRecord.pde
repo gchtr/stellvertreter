@@ -4,7 +4,7 @@ MQTTClient client;
 PrintWriter output;
 
 void setup() {
-  frameRate(10)
+  frameRate(10);
   background(255);
   size(200, 200);
   client = new MQTTClient(this);
