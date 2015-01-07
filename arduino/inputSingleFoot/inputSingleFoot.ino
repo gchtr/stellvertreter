@@ -26,7 +26,7 @@ void setup()
   pinMode(PRESSURE_BACK, INPUT);
   
   Serial.println("connecting...");
-  if (client.connect("teet-alpha", "2ba467a7534549c6", "d955e5d5a02418a35b0fbb58eefb2844")) {
+  if (client.connect("teet-alpha-singleFoot", "2ba467a7534549c6", "d955e5d5a02418a35b0fbb58eefb2844")) {
    Serial.println("connected!");
  } else {
    Serial.println("not connected!");
