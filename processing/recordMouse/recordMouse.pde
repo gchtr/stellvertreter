@@ -11,9 +11,23 @@ void setup() {
 }
 
 void draw() {
-  client.publish("/input/front", String.valueOf(mouseX));
+  
+  int val = mouseX;
+  
+  if (mouseX > width/2) {
+    val = 0;
+  }
+  
+  client.publish("/input/front", String.valueOf(val));
 }
 
 void keyPressed() {
   exit();
+}
+
+/**
+ * This function is required for the shiftr connection to work
+ */
+void messageReceived(String topic, byte[] payload) {
+  //println("new message: " + topic + " - " + new String(payload));
 }
