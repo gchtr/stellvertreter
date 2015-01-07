@@ -9,9 +9,9 @@ int pressureFront = 0;
 int pressureBack = 0;
 
 void callback(char* topic, byte* payload, unsigned int length) {
- Serial.print("incoming: ");
- Serial.write(payload, length);
- Serial.println();
+  Serial.print("incoming: ");
+  Serial.write(payload, length);
+  Serial.println();
 }
 
 YunClient net;
@@ -40,13 +40,23 @@ void loop()
   pressureFront = analogRead(PRESSURE_FRONT);
   pressureBack = analogRead(PRESSURE_BACK);
   
-  if (pressure1 >= 940) {
+  Serial.println(pressureFront + "," + pressureBack);
+  
+  /*if (pressure1 >= 940) {
     sendFront();
   }
   
   if (pressure2 >= 940) {
     sendBack();
-  }
+  }*/
+  
+  sendData();
+}
+
+void sendData()
+{
+  String stringToSend = pressureFront + "," + pressureBack;  
+  client.publish("/input", stringToSend);
 }
 
 void sendFront()
