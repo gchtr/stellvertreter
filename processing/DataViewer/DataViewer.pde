@@ -1,12 +1,20 @@
+/**
+ * Viewer for DataSets
+ *
+ * Based on the SignalProcessing Sketch by Max Rheiner.
+ */
+
+/**
+ * Variables
+ */
 Table       table;
 DataView    dataView;
 float       timeSteps;
 float       timeStepsMark;
 float       xOffset = 0;
-float       minVal = 0;
-float       maxVal = 1000;
 ArrayList<DataView> dataViews = new ArrayList<DataView>();
-
+int levelHeight;
+int levelOffset;
 
 void setup()
 {
@@ -14,6 +22,13 @@ void setup()
   
   // load the signal file
   selectInput("Select a file to process:", "loadSelectedFile");
+  
+  /**
+   * Settings
+   */
+  levelHeight = height/2-20;
+  levelOffset = 0;
+  timeSteps = 1.1;
   
   noLoop();
 }
@@ -68,8 +83,10 @@ void draw()
     
     for (int i = 0; i < dataViews.size(); i++) {
       DataView view = dataViews.get(i);
+
+      // level out data / fit into view
+      view.setLeveling(levelHeight, levelOffset);
       
-      view.setLeveling(height/2-20, 0);
       view.draw(view._color);
     }
 
