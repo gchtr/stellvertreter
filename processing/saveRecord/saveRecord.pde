@@ -10,8 +10,6 @@ void setup() {
   client = new MQTTClient(this);
   client.connect("mqtt://2ba467a7534549c6:d955e5d5a02418a35b0fbb58eefb2844@connect.shiftr.io", "teet-alpha");
 
-  client.subscribe("/input");
-
   selectOutput("Select a file to write to:", "saveToFile");
 }
 
@@ -36,6 +34,7 @@ void keyPressed() {
 
 void saveToFile(File selectedFile) {
   output = createWriter(selectedFile);
+  client.subscribe("/input");
 }
 
 void messageReceived(String topic, byte[] payload) {
