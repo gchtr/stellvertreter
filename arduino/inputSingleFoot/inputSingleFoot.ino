@@ -40,7 +40,7 @@ void loop()
   pressureFront = analogRead(PRESSURE_FRONT);
   pressureBack = analogRead(PRESSURE_BACK);
   
-  Serial.println(pressureFront + "," + pressureBack);
+  Serial.println(String(pressureFront) + "," + String(pressureBack));
   
   /*if (pressure1 >= 940) {
     sendFront();
@@ -55,7 +55,7 @@ void loop()
 
 void sendData()
 {
-  String stringToSend = pressureFront + "," + pressureBack;  
+  String stringToSend = String(pressureFront) + "," + String(pressureBack);  
   client.publish("/input", stringToSend);
 }
 
