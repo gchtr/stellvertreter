@@ -8,6 +8,8 @@
 int pressureFront = 0;
 int pressureBack = 0;
 
+unsigned long lastMillis = 0;
+
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("incoming: ");
   Serial.write(payload, length);
@@ -49,8 +51,10 @@ void loop()
   if (pressure2 >= 940) {
     sendBack();
   }*/
-  
-  sendData();
+  if  (millis() - lastMillis > 100) {
+    lastMillis = millis();
+    sendData();
+  }
 }
 
 void sendData()
