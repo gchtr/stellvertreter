@@ -62,11 +62,11 @@ void sendData()
 void sendFront()
 {
   // sende Daten an /input/front
-  client.publish("/input/front", String(pressure1));
+  client.publish("/input/front", String(pressureFront));
 }
 
 void sendBack()
 {
   // sende Daten an /input/back
-  client.publish("/input/back", String(pressure2));
+  client.publish("/input/back", String(pressureBack));
 }
