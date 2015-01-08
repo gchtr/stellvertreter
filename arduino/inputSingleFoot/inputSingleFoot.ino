@@ -59,7 +59,7 @@ void loop()
 
 void sendData()
 {
-  String stringToSend = String(pressureFront) + "," + String(pressureBack);  
+  String stringToSend = String(pressureFront) + "," + String(pressureBack) + ",";  
   client.publish("/input", stringToSend);
 }
 
