@@ -65,8 +65,18 @@ void processFile(File selectedFile)
 
 void sendLine(String line)
 {
-  println(line);
+  printLine(line);
+  
   client.publish("/input", line);
+}
+
+void printLine(String line) {
+  String[] values = split(line, ",");
+  
+  for (int j = 0; j < values.length; j++) {
+    print(values[j] + "\t");  
+  }
+  println(); 
 }
 
 void messageReceived(String topic, byte[] payload)
