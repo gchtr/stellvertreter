@@ -1,4 +1,4 @@
-# TEET
+# FEET
 
 A prototype for telepresence shoes using [shiftr.io](http://shiftr.io).
 
