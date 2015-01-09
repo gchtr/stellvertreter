@@ -26,9 +26,9 @@ void setup()
 
   pinMode(PRESSURE_FRONT, INPUT);
   pinMode(PRESSURE_BACK, INPUT);
-  
+
   Serial.println("connecting...");
-  if (client.connect("teet-alpha-singleFoot", "2ba467a7534549c6", "d955e5d5a02418a35b0fbb58eefb2844")) {
+  if (client.connect("inputSingleFoot", "2ba467a7534549c6", "d955e5d5a02418a35b0fbb58eefb2844")) {
    Serial.println("connected!");
  } else {
    Serial.println("not connected!");
@@ -38,16 +38,16 @@ void setup()
 void loop()
 {
   client.loop();
-  
+
   pressureFront = analogRead(PRESSURE_FRONT);
   pressureBack = analogRead(PRESSURE_BACK);
-  
+
   Serial.println(String(pressureFront) + "," + String(pressureBack));
-  
+
   /*if (pressure1 >= 940) {
     sendFront();
   }
-  
+
   if (pressure2 >= 940) {
     sendBack();
   }*/
@@ -59,7 +59,7 @@ void loop()
 
 void sendData()
 {
-  String stringToSend = String(pressureFront) + "," + String(pressureBack) + ",";  
+  String stringToSend = String(pressureFront) + "," + String(pressureBack) + ",";
   client.publish("/input", stringToSend);
 }
 

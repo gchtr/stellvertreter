@@ -11,15 +11,15 @@ void setup() {
   frameRate(10);
   size(200, 200);
   client = new MQTTClient(this);
-  client.connect("mqtt://2ba467a7534549c6:d955e5d5a02418a35b0fbb58eefb2844@connect.shiftr.io", "teet-alpha-playRecord");
+  client.connect("mqtt://2ba467a7534549c6:d955e5d5a02418a35b0fbb58eefb2844@connect.shiftr.io", "playRecord");
   noLoop();
-  
+
   selectFile();
 }
 
 void draw() {
   background(255);
-  
+
   if (i >= 0 && i < lines.length) {
     String line = String.valueOf(lines[i]);
 
@@ -57,7 +57,7 @@ void selectFile()
 
 void processFile(File selectedFile)
 {
-  lines = loadStrings(selectedFile); 
+  lines = loadStrings(selectedFile);
   i = 0;
   lastMillis = millis();
   loop();
@@ -66,17 +66,17 @@ void processFile(File selectedFile)
 void sendLine(String line)
 {
   printLine(line);
-  
+
   client.publish("/input", line);
 }
 
 void printLine(String line) {
   String[] values = split(line, ",");
-  
+
   for (int j = 0; j < values.length; j++) {
-    print(values[j] + "\t");  
+    print(values[j] + "\t");
   }
-  println(); 
+  println();
 }
 
 void messageReceived(String topic, byte[] payload)
