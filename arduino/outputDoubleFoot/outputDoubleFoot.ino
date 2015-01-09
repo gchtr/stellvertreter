@@ -42,11 +42,9 @@ void loop()
   
   if (leftFront > 900) {
     digitalWrite(PIN_PUMP_LEFT_FRONT, HIGH);
-    Serial.println("high");
   }
   else {
     digitalWrite(PIN_PUMP_LEFT_FRONT, LOW);
-    Serial.println("low");
   }
   
   if (leftBack > 900) {
@@ -56,35 +54,33 @@ void loop()
     digitalWrite(PIN_PUMP_LEFT_BACK, LOW);
   }
   
-  /*if (rightFront > 950) {
+  if (rightFront > 900) {
     digitalWrite(PIN_PUMP_RIGHT_FRONT, HIGH);
   }
   else {
-    digitalWrite(PIN_PUMP_RIGHT_BACK, LOW);
+    digitalWrite(PIN_PUMP_RIGHT_FRONT, LOW);
   }
   
-  if (rightBack > 950) {
+  if (rightBack > 900) {
     digitalWrite(PIN_PUMP_RIGHT_BACK, HIGH);
   }
   else {
     digitalWrite(PIN_PUMP_RIGHT_BACK, LOW);
-  }*/
+  }
   
 }
 
-void messageReceived(String topic, char * payload, unsigned int length) {
-  //Serial.println("pre: " + String(payload));
-  
+void messageReceived(String topic, char * payload, unsigned int length)
+{
   char * a = strtok(payload, ",");
   char * b = strtok(NULL, ",");
-  /*char *c = strtok(NULL, ",");
-  char *d = strtok(NULL, ",");*/
+  char * c = strtok(NULL, ",");
+  char * d = strtok(NULL, ",");
   
   leftFront = atoi(a);
   leftBack = atoi(b);
-  /*rightFront = atoi(c);
-  rightBack = atoi(d);*/
-  //Serial.println(String(leftFront) + ";" + String(leftBack));
+  rightFront = atoi(c);
+  rightBack = atoi(d);
   
   // manually set back payload
   memset(payload, 0, 0);
