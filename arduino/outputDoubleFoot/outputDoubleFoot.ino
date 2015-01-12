@@ -26,7 +26,7 @@ void setup()
   pinMode(PIN_PUMP_RIGHT_BACK, OUTPUT);
 
   Serial.println("connecting...");
-  if (client.connect("outputDoubleFoot", "2ba467a7534549c6", "d955e5d5a02418a35b0fbb58eefb2844")) {
+  if (client.connect("outputDoubleFoot", "7dc71b64220f9034", "60277088aaf9b5e71e1a5dfbeef76156")) {
     Serial.println("connected!");
   }
   else {
