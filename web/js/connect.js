@@ -1,4 +1,8 @@
-var client = new Paho.MQTT.Client('ws://connect.shiftr.io/javascript?auth=2ba467a7534549c6:d955e5d5a02418a35b0fbb58eefb2844', 'javascript');
+// ws://7dc71b64220f9034:60277088aaf9b5e71e1a5dfbeef76156@connect.shiftr.io:1884/
+
+var uri = URI('ws://7dc71b64220f9034:60277088aaf9b5e71e1a5dfbeef76156@connect.shiftr.io:1884/');
+
+var client = new Paho.MQTT.Client('ws://' + uri.host() + '/', 'webPlayer');
 
 client.onConnectionLost = function(res) {
   if(res.errorCode !== 0) {
@@ -11,11 +15,12 @@ client.onMessageArrived = function(message) {
 };
 
 client.connect({
+  userName: uri.username(),
+  password: uri.password(),
   onSuccess: function() {
     client.subscribe("/input");
     message = new Paho.MQTT.Message('Hello world!');
     message.destinationName = "/input";
-    console.log(message);
     client.send(message);
   },
   onFailure: function(lala) {
