@@ -7,7 +7,7 @@ void setup() {
   background(255);
   size(200, 200);
   client = new MQTTClient(this);
-  client.connect("mqtt://2ba467a7534549c6:d955e5d5a02418a35b0fbb58eefb2844@connect.shiftr.io", "randomDataGenerator");
+  client.connect("mqtt://7dc71b64220f9034:60277088aaf9b5e71e1a5dfbeef76156@connect.shiftr.io", "randomDataGenerator");
 }
 
 void draw() {
