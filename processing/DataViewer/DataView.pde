@@ -92,20 +92,13 @@ class DataView
     noFill();
 
     stroke(col);
+    strokeWeight(2);
 
     // draw signal
     beginShape();
     for (int i=0; i < _curList.length;i++)
       vertex(_timeSteps * i, - _curList[i]);
     endShape();
-
-    // draw the spectrum
-    stroke(col);
-
-    for (int i = 0; i < _fft.specSize(); i++)
-    {
-      line(i, height/2, i, height/2 - _fft.getBand(i)*.01);
-    }
 
     popStyle();
   }
