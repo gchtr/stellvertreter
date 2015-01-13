@@ -12,6 +12,8 @@ int leftBack = 0;
 int rightFront = 0;
 int rightBack = 0;
 
+int sensorThreshold = 900;
+
 YunClient net;
 MQTTClient client("connect.shiftr.io", 1883, net);
 
@@ -40,28 +42,28 @@ void loop()
 {
   client.loop();
 
-  if (leftFront > 900) {
+  if (leftFront > sensorThreshold) {
     digitalWrite(PIN_PUMP_LEFT_FRONT, HIGH);
   }
   else {
     digitalWrite(PIN_PUMP_LEFT_FRONT, LOW);
   }
 
-  if (leftBack > 900) {
+  if (leftBack > sensorThreshold) {
     digitalWrite(PIN_PUMP_LEFT_BACK, HIGH);
   }
   else {
     digitalWrite(PIN_PUMP_LEFT_BACK, LOW);
   }
 
-  if (rightFront > 900) {
+  if (rightFront > sensorThreshold) {
     digitalWrite(PIN_PUMP_RIGHT_FRONT, HIGH);
   }
   else {
     digitalWrite(PIN_PUMP_RIGHT_FRONT, LOW);
   }
 
-  if (rightBack > 900) {
+  if (rightBack > sensorThreshold) {
     digitalWrite(PIN_PUMP_RIGHT_BACK, HIGH);
   }
   else {
