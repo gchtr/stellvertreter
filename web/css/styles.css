@@ -1,16 +1,18 @@
-svg {
-  font: 10px sans-serif;
+#chart_container {
+	float: left;
+	position: relative;
 }
 
-.line {
-  fill: none;
-  stroke: #4883c6;
-  stroke-width: 3px;
+#chart {
+	display: inline-block;
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+#legend {
+	display: inline-block;
+	position: relative;
+	left: 8px;
+}
+
+#content {
+	width: 1200px;
 }
