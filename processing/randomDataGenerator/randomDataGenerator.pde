@@ -3,7 +3,7 @@ import processing.mqtt.*;
 MQTTClient client;
 
 void setup() {
-  frameRate(1);
+  frameRate(10);
   background(255);
   size(200, 200);
   client = new MQTTClient(this);
@@ -11,15 +11,7 @@ void setup() {
 }
 
 void draw() {
-  /*client.publish("/input/left/front", String.valueOf(randomNumber()));
-  client.publish("/input/left/back", String.valueOf(randomNumber()));
-  client.publish("/input/right/front", String.valueOf(randomNumber()));
-  client.publish("/input/right/back", String.valueOf(randomNumber()));*/
-
-  String value = String.valueOf(randomNumber() + "," + randomNumber() + "," + randomNumber() + "," + randomNumber());
-
-  //println(value);
-
+  String value = String.valueOf(randomNumber() + "," + randomNumber() + "," + randomNumber() + "," + randomNumber() + ",");
   client.publish("/input", value);
 }
 
